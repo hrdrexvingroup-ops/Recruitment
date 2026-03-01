@@ -722,53 +722,103 @@ a:hover { text-decoration: underline; }
 
 <!-- ═══════════════════════ KANDIDAT VIEW ═══════════════════════ -->
 <div class="view" id="view-kandidat">
-<div class="table-view">
-  <div class="view-header">
-    <div>
-      <div class="view-title">👥 Semua Kandidat</div>
-      <div class="text-muted" style="margin-top:4px">Pilih tindakan per kandidat · data tersimpan ke Google Sheet</div>
+  <div class="table-view">
+    <div class="view-header"> 
+      <div>
+        <div class="view-title">👥 Semua Kandidat</div>
+        <div class="text-muted small">Kelola 2.205 kandidat dengan cepat melalui aksi massal.</div>
+      </div>
+      <span class="view-count" id="kandidat-count">0 kandidat</span>
     </div>
-    <span class="view-count" id="kandidat-count">0 kandidat</span>
-  </div>
-  <div class="toolbar">
-    <select id="k-filter-posisi" onchange="renderKandidat()">
-      <option value="">Semua Posisi</option>
-    </select>
-    <select id="k-filter-stage" onchange="renderKandidat()">
-      <option value="pending">Belum Diproses (Baru + Disimpan)</option>
-      <option value="">Semua Status</option>
-      <option value="Baru">Baru</option>
-      <option value="Disimpan">Disimpan</option>
-      <option value="Reject">Reject</option>
-      <option value="Job Test">Job Test</option>
-      <option value="Psikotest">Psikotest</option>
-      <option value="Interview">Interview</option>
-      <option value="Join">Join</option>
-    </select>
-    <input type="text" id="k-search" placeholder="Cari nama..." oninput="renderKandidat()">
-  </div>
-  <div style="overflow-x:auto">
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>Nama</th>
-        <th>Posisi Dilamar</th>
-        <th>WA</th>
-        <th>Email</th>
-        <th>Provinsi</th>
-        <th>Pendidikan</th>
-        <th>Jurusan</th>
-        <th>Tgl Daftar</th>
-        <th>CV</th>
-        <th>Status</th>
-        <th>Tindakan</th>
-      </tr>
-    </thead>
-    <tbody id="kandidat-body"></tbody>
-  </table>
-  </div>
-</div>
-</div>
+
+    <div class="d-flex flex-wrap gap-2 mb-3 px-3 align-items-center">
+      <select id="filterPendidikan" class="form-select form-select-sm" onchange="renderKandidat()" style="width: 180px;">
+        <option value="">Semua Pendidikan</option>
+      </select>
+      
+      <input type="text" id="smartSearch" class="form-control form-control-sm" placeholder="Cari Jurusan/Nama..." oninput="renderKandidat()" style="width: 220px;">
+      
+      <button id="btnResetFilters" class="btn btn-light btn-sm border" onclick="resetSemuaFilter()" style="display:none;">
+        <i class="bi bi-arrow-counterclockwise"></i> Reset
+      </button>
+      
+      <button id="btnBulkReject" class="btn btn-danger btn-sm" onclick="handleBulkReject()" style="display:none; margin-left: auto;">
+        Reject Terpilih (<span id="selectedCount">0</span>)
+      </button>
+    </div>
+
+    <div class="toolbar px-3">
+      <select id="k-filter-posisi" onchange="renderKandidat()">
+        <option value="">Semua Posisi</option>
+      </select>
+      <select id="k-filter-stage" onchange="renderKandidat()">
+        <option value="pending">Belum Diproses (Baru + Disimpan)</option>
+        <option value="">Semua Status</option>
+        <option value="Baru">Baru</option>
+        <option value="Reject">Reject</option>
+      </select>
+    </div>
+
+    <div style="overflow-x:auto" class="px-3">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 40px; text-align: center;">
+              <input type="checkbox" id="selectAllCheckbox" onclick="toggleSelectAll(this)">
+            </th>
+            <th>Nama</th>
+            <th>Posisi Dilamar</th>
+            <th>WA</th>
+            <th>Email</th>
+            <th>Provinsi</th>
+            <th>Pendidikan</th>
+            <th>Jurusan</th>
+            <th>Tgl Daftar</th>
+            <th>CV</th>
+            <th>Status</th>
+            <th>Tindakan</th>
+          </tr>
+        </thead>
+        <tbody id="kandidat-body"></tbody>
+      </table>
+    </div>
+  </div> </div> ```
+
+---
+
+### 2. Update JavaScript di Baris 357 (Utility)
+Masukkan kode ini di area yang Anda tunjukkan tadi:
+
+```javascript
+// Baris 357+: FUNGSI UTILITY CHECKBOX & FILTER
+function toggleSelectAll(source) {
+    const checkboxes = document.querySelectorAll('.candidate-checkbox');
+    checkboxes.forEach(cb => {
+        // Intellectual Sparring: Hanya mencentang yang tidak disembunyikan filter!
+        if (cb.closest('tr').style.display !== 'none') {
+            cb.checked = source.checked;
+        }
+    });
+    updateBulkButton();
+}
+
+function updateBulkButton() {
+    const selected = document.querySelectorAll('.candidate-checkbox:checked');
+    const btn = document.getElementById('btnBulkReject');
+    const countSpan = document.getElementById('selectedCount');
+    if (btn && countSpan) {
+        countSpan.innerText = selected.length;
+        btn.style.display = selected.length > 0 ? 'inline-block' : 'none';
+    }
+}
+
+function resetSemuaFilter() {
+    document.getElementById('filterPendidikan').value = '';
+    document.getElementById('smartSearch').value = '';
+    document.getElementById('k-filter-posisi').value = '';
+    document.getElementById('k-filter-stage').value = 'pending';
+    renderKandidat(); // Re-render table ke kondisi awal
+}
 
 <!-- ═══════════════════════ JOB TEST VIEW ═══════════════════════ -->
 <div class="view" id="view-jobtest">
