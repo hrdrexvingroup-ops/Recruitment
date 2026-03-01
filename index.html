@@ -753,7 +753,8 @@ a:hover { text-decoration: underline; }
       <tr>
         <th>Nama</th>
         <th>Posisi Dilamar</th>
-        <th>WA & Email</th>
+        <th>WA</th>
+        <th>Email</th>
         <th>Provinsi</th>
         <th>Pendidikan</th>
         <th>Jurusan</th>
@@ -828,7 +829,8 @@ a:hover { text-decoration: underline; }
         <th>Nama</th>
         <th>Posisi</th>
         <th>Jurusan</th>
-        <th>No. HP & Email</th>
+        <th>No. HP</th>
+        <th>Email</th>
         <th>Tgl Lahir</th>
         <th>Tgl Psikotest</th>
         <th>Skor IQ</th>
@@ -1233,7 +1235,7 @@ function renderKandidat() {
     return `<tr id="row-k-${k.row}">
       <td class="fw6">${k.nama || '—'}</td>
       <td>${k.posisi || '—'}</td>
-      <td class="nowrap">${wa & Email}</td>
+      <td class="nowrap">${wa}</td>
       <td class="text-muted" style="font-size:0.70rem">${k.email || '—'}</td>
       <td>${provBadge}</td>
       <td style="font-size:0.70rem">${k.Pendidikan || '—'}</td>
