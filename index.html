@@ -756,7 +756,7 @@ a:hover { text-decoration: underline; }
         <th>WA</th>
         <th>Email</th>
         <th>Provinsi</th>
-        <th>Pendidikan</th>
+        <th>Pendidikan terakhir</th>
         <th>Jurusan</th>
         <th>Tgl Daftar</th>
         <th>CV</th>
@@ -1236,10 +1236,10 @@ function renderKandidat() {
       <td class="fw6">${k.nama || '—'}</td>
       <td>${k.posisi || '—'}</td>
       <td class="nowrap">${wa}</td>
-      <td class="text-muted" style="font-size:0.75rem">${k.email || '—'}</td>
+      <td class="text-muted" style="font-size:0.70rem">${k.email || '—'}</td>
       <td>${provBadge}</td>
-      <td style="font-size:0.76rem">${k.pendidikan || '—'}</td>
-      <td style="font-size:0.76rem">${k.jurusan || '—'}</td>
+      <td style="font-size:0.70rem">${k.Pendidikan terakhir || '—'}</td>
+      <td style="font-size:0.70rem">${k.jurusan || '—'}</td>
       <td class="text-muted">${fmtDate(k.tanggal)}</td>
       <td>${cvLink}</td>
       <td><span class="badge ${badgeCls}">${stage}</span></td>
