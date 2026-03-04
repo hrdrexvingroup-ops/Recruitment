@@ -65,8 +65,6 @@ body {
   align-items: center;
   border-right: 3px solid var(--orange);
 }
-
-/* SVG Rexvin logo embedded */
 .logo-svg { height: 32px; width: auto; }
 
 .nav-tabs {
@@ -94,10 +92,7 @@ body {
   white-space: nowrap;
 }
 .nav-tab:hover { color: #fff; background: rgba(255,255,255,0.08); }
-.nav-tab.active {
-  color: #fff;
-  background: rgba(255,255,255,0.12);
-}
+.nav-tab.active { color: #fff; background: rgba(255,255,255,0.12); }
 .nav-tab.active::after {
   content: '';
   position: absolute;
@@ -113,10 +108,7 @@ body {
   align-items: center;
   gap: 12px;
 }
-.sync-badge {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.5);
-}
+.sync-badge { font-size: 0.72rem; color: rgba(255,255,255,0.5); }
 .btn-print {
   padding: 6px 14px;
   background: var(--amber);
@@ -179,7 +171,6 @@ body {
 ═══════════════════════════════════════════════════ */
 .dash-wrap { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
 
-/* KPI Cards */
 .kpi-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -217,17 +208,12 @@ body {
   color: var(--brown);
   line-height: 1;
 }
-.kpi-sub {
-  font-size: 0.72rem;
-  color: var(--muted);
-  margin-top: 6px;
-}
+.kpi-sub { font-size: 0.72rem; color: var(--muted); margin-top: 6px; }
 .kpi-card.highlight::before { background: var(--green); }
 .kpi-card.highlight .kpi-val { color: var(--green); }
 .kpi-card.warn::before { background: var(--red); }
 .kpi-card.warn .kpi-val { color: var(--red); }
 
-/* Dashboard grid */
 .dash-grid {
   display: grid;
   grid-template-columns: 1fr 380px;
@@ -256,30 +242,20 @@ body {
   text-transform: uppercase;
 }
 
-/* Funnel per posisi */
-.funnel-filter {
-  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;
+.funnel-select-wrap {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
 }
-.funnel-pill {
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1.5px solid var(--border);
-  font-size: 0.72rem; font-weight: 600; cursor: pointer;
-  background: var(--cream); color: var(--muted);
-  transition: all 0.12s;
-}
-.funnel-pill.active {
-  background: var(--brown); color: #fff; border-color: var(--brown);
+.funnel-select-wrap label { font-size: 0.75rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.funnel-select-wrap select {
+  padding: 6px 12px;
+  border: 1.5px solid var(--border); border-radius: 6px;
+  font-family: inherit; font-size: 0.82rem;
+  background: var(--cream); color: var(--ink); cursor: pointer;
+  min-width: 220px;
 }
 
-.funnel-stages {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.funnel-row {
-  display: flex; align-items: center; gap: 10px;
-}
+.funnel-stages { display: flex; flex-direction: column; gap: 10px; }
+.funnel-row { display: flex; align-items: center; gap: 10px; }
 .funnel-lbl { width: 130px; font-size: 0.76rem; color: var(--muted); text-align: right; flex-shrink: 0; }
 .funnel-track {
   flex: 1; height: 28px;
@@ -299,7 +275,6 @@ body {
 .funnel-pct { width: 40px; font-size: 0.72rem; color: var(--muted); text-align: right; }
 .funnel-drop { font-size: 0.68rem; color: var(--red); width: 40px; }
 
-/* Posisi Open */
 .open-list { display: flex; flex-direction: column; gap: 10px; }
 .open-item {
   display: flex; justify-content: space-between; align-items: center;
@@ -321,7 +296,7 @@ body {
 .days-bad  { color: var(--red); }
 
 /* ═══════════════════════════════════════════════════
-   TABLE VIEWS (Kandidat, Job Test, Psikotest, Interview)
+   TABLE VIEWS
 ═══════════════════════════════════════════════════ */
 .table-view { padding: 24px 32px; }
 
@@ -383,7 +358,6 @@ body {
 .data-table tbody tr:hover { background: var(--cream); }
 .data-table tbody tr:last-child td { border-bottom: none; }
 
-/* Badges */
 .badge {
   display: inline-block; padding: 3px 9px;
   border-radius: 20px; font-size: 0.68rem; font-weight: 700;
@@ -395,8 +369,9 @@ body {
 .badge-blue   { background: #dbeafe; color: #1e40af; }
 .badge-gray   { background: #f0f0f0; color: #666; }
 .badge-brown  { background: #ede0d4; color: var(--brown); }
+.badge-kepri  { background: #dbeafe; color: #1e40af; }
+.badge-luar   { background: #fef3c7; color: #92400e; }
 
-/* Action select dropdown per row */
 .action-select {
   padding: 5px 8px;
   border: 1.5px solid var(--border);
@@ -410,7 +385,6 @@ body {
 }
 .action-select:focus { border-color: var(--orange); outline: none; }
 
-/* Score input inline */
 .score-input {
   width: 70px; padding: 4px 8px;
   border: 1.5px solid var(--border);
@@ -429,21 +403,37 @@ body {
 .save-btn:hover { background: var(--brown2); }
 .save-btn.sm { padding: 3px 9px; font-size: 0.68rem; }
 
-/* Empty state */
-.empty-state {
-  text-align: center; padding: 60px 24px;
-  color: var(--muted);
-}
+.empty-state { text-align: center; padding: 60px 24px; color: var(--muted); }
 .empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
 .empty-msg  { font-size: 0.88rem; }
 
-/* Loading */
-.loading-row td { text-align: center; padding: 40px; color: var(--muted); }
-
-/* Psikotest — tanggal lahir & iq columns */
+/* ═══ PSIKOTEST — kehadiran otomatis ═══ */
 .iq-score {
   font-family: 'Playfair Display', serif;
   font-size: 1.1rem; font-weight: 700;
+}
+.hadir-auto {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 20px;
+  font-size: 0.68rem; font-weight: 700;
+}
+.hadir-auto.hadir   { background: #d4edda; color: #155724; }
+.hadir-auto.absen   { background: #fde8e4; color: #7a2010; }
+
+/* DISC badge */
+.disc-badge { display: inline-flex; gap: 3px; }
+.disc-d { background: #FFEBEE; color: #B71C1C; padding: 2px 7px; border-radius: 5px; font-weight: 700; font-size: 0.78rem; }
+.disc-i { background: #FFF8E1; color: #F57F17; padding: 2px 7px; border-radius: 5px; font-weight: 700; font-size: 0.78rem; }
+.disc-s { background: #E8F5E9; color: #2E7D32; padding: 2px 7px; border-radius: 5px; font-weight: 700; font-size: 0.78rem; }
+.disc-c { background: #E3F2FD; color: #1565C0; padding: 2px 7px; border-radius: 5px; font-weight: 700; font-size: 0.78rem; }
+
+/* Sync info psikotest */
+.ps-sync-info {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px; border-radius: 6px;
+  background: #dbeafe; color: #1e40af;
+  font-size: 0.75rem; font-weight: 600;
+  margin-bottom: 14px;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -502,31 +492,9 @@ body {
 }
 .btn-save:hover { background: var(--brown2); }
 
-/* Score preview box */
-.score-preview {
-  margin-top: 12px; padding: 12px 14px;
-  background: var(--cream); border-radius: 7px;
-  font-size: 0.82rem; display: none;
-}
-.score-preview.show { display: block; }
-
 /* ═══════════════════════════════════════════════════
-   PRINT STYLES
+   POSISI MANAGEMENT
 ═══════════════════════════════════════════════════ */
-@media print {
-  .header, .conn-bar, .toolbar, .action-select, .save-btn, .btn-print,
-  .modal-overlay, .funnel-filter { display: none !important; }
-  .view.active { display: block !important; }
-  body { background: white; }
-  .data-table { font-size: 0.72rem; }
-  .kpi-card { break-inside: avoid; }
-}
-
-/* ═══════════════════════════════════════════════════
-   UTIL
-═══════════════════════════════════════════════════ */
-
-/* ═══════════ POSISI MANAGEMENT ═══════════ */
 .posisi-panel {
   background: var(--paper);
   border: 1px solid var(--border);
@@ -572,22 +540,21 @@ body {
   font-size: 0.7rem; font-weight: 600; cursor: pointer;
 }
 .fulfil-btn:hover { opacity: 0.85; }
-/* Funnel selector — dropdown, not pills */
-.funnel-select-wrap {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
-}
-.funnel-select-wrap label { font-size: 0.75rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
-.funnel-select-wrap select {
-  padding: 6px 12px;
-  border: 1.5px solid var(--border); border-radius: 6px;
-  font-family: inherit; font-size: 0.82rem;
-  background: var(--cream); color: var(--ink); cursor: pointer;
-  min-width: 220px;
-}
-/* Provinsi badge */
-.badge-kepri  { background: #dbeafe; color: #1e40af; }
-.badge-luar   { background: #fef3c7; color: #92400e; }
 
+/* ═══════════════════════════════════════════════════
+   PRINT
+═══════════════════════════════════════════════════ */
+@media print {
+  .header, .conn-bar, .toolbar, .action-select, .save-btn, .btn-print,
+  .modal-overlay { display: none !important; }
+  .view.active { display: block !important; }
+  body { background: white; }
+  .data-table { font-size: 0.72rem; }
+}
+
+/* ═══════════════════════════════════════════════════
+   UTIL
+═══════════════════════════════════════════════════ */
 a { color: var(--orange); text-decoration: none; }
 a:hover { text-decoration: underline; }
 .text-muted { color: var(--muted); font-size: 0.75rem; }
@@ -602,7 +569,6 @@ a:hover { text-decoration: underline; }
   <div class="logo-area">
     <img src="logo.png" class="logo-svg" alt="Rexvin">
   </div>
-
   <nav class="nav-tabs">
     <button class="nav-tab active" onclick="switchView('dashboard')">📊 Dashboard</button>
     <button class="nav-tab" onclick="switchView('kandidat')">👥 Kandidat</button>
@@ -610,7 +576,6 @@ a:hover { text-decoration: underline; }
     <button class="nav-tab" onclick="switchView('psikotest')">🧠 Psikotest</button>
     <button class="nav-tab" onclick="switchView('interview')">🗣 Interview</button>
   </nav>
-
   <div class="header-right">
     <span class="sync-badge" id="sync-badge">—</span>
     <button class="btn-print" onclick="window.print()">⬇ Print / PDF</button>
@@ -630,7 +595,6 @@ a:hover { text-decoration: underline; }
 <div class="view active" id="view-dashboard">
 <div class="dash-wrap">
 
-  <!-- Posisi Management Panel -->
   <div class="posisi-panel">
     <div class="posisi-panel-header">
       <div class="posisi-panel-title">📋 Daftar Posisi Rekrutmen</div>
@@ -653,7 +617,6 @@ a:hover { text-decoration: underline; }
     </table>
   </div>
 
-  <!-- KPI Row -->
   <div class="kpi-row" id="kpi-row">
     <div class="kpi-card">
       <div class="kpi-label">Total Posisi</div>
@@ -687,10 +650,7 @@ a:hover { text-decoration: underline; }
     </div>
   </div>
 
-  <!-- Main grid -->
   <div class="dash-grid">
-
-    <!-- Funnel -->
     <div class="card">
       <div class="card-title">Funnel Rekrutmen per Posisi</div>
       <div class="card-sub">Tracking kendala di setiap tahap</div>
@@ -706,7 +666,6 @@ a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <!-- Posisi Open -->
     <div class="card">
       <div class="card-title">Posisi Masih Open</div>
       <div class="card-sub">Hari berjalan sejak permintaan</div>
@@ -714,12 +673,12 @@ a:hover { text-decoration: underline; }
         <div class="empty-state"><div class="empty-icon">✅</div><div class="empty-msg">Data belum tersedia</div></div>
       </div>
     </div>
-
   </div>
 </div>
 </div>
 
 <!-- ═══════════════════════ KANDIDAT VIEW ═══════════════════════ -->
+<!-- NOTE: Kolom Email dihapus dari tabel ini. Email tersedia di menu Psikotest. -->
 <div class="view" id="view-kandidat">
 <div class="table-view">
   <div class="view-header">
@@ -730,7 +689,6 @@ a:hover { text-decoration: underline; }
     <span class="view-count" id="kandidat-count">0 kandidat</span>
   </div>
 
-  <!-- Filter Bar — semua filter saling intersect -->
   <div class="toolbar">
     <select id="k-filter-posisi" onchange="renderKandidat()">
       <option value="">Semua Posisi</option>
@@ -761,7 +719,7 @@ a:hover { text-decoration: underline; }
     </button>
   </div>
 
-  <!-- Bulk Reject Bar — muncul saat ada checkbox tercentang -->
+  <!-- Bulk Reject Bar -->
   <div id="bulk-bar" style="display:none;align-items:center;gap:10px;padding:8px 14px;background:#fff8ec;border:1.5px solid var(--amber);border-radius:8px;margin-bottom:10px;font-size:0.83rem;flex-wrap:wrap">
     <span style="font-weight:700;color:var(--brown)"><span id="bulk-count">0</span> kandidat dipilih</span>
     <button onclick="executeBulkReject()"
@@ -790,8 +748,7 @@ a:hover { text-decoration: underline; }
         </th>
         <th>Nama</th>
         <th>Posisi Dilamar</th>
-        <th>WA</th>
-        <th>Email</th>
+        <th>No. WA</th>
         <th>Provinsi</th>
         <th>Pendidikan</th>
         <th>Jurusan</th>
@@ -844,18 +801,42 @@ a:hover { text-decoration: underline; }
 </div>
 
 <!-- ═══════════════════════ PSIKOTEST VIEW ═══════════════════════ -->
+<!--
+  LOGIKA PSIKOTEST:
+  - Kandidat yang di-assign ke stage "Psikotest" muncul di tabel ini
+  - Kehadiran OTOMATIS dari Google Sheet psikotest terpisah:
+      • Nama ada di sheet psikotest → status "Hadir" (+ tampilkan IQ, DISC dari sheet tsb)
+      • Nama tidak ada di sheet psikotest → status "Tidak Hadir"
+  - Tombol "→ Interview" aktif otomatis jika IQ ≥ 90 dari sheet psikotest
+  - Apps Script harus return field: psikotestHadir (true/false), psikotestIQ, psikotestDISC
+    yang dirisolusi dari JOIN antara sheet kandidat dan sheet psikotest berdasarkan nama+posisi
+-->
 <div class="view" id="view-psikotest">
 <div class="table-view">
   <div class="view-header">
     <div>
       <div class="view-title">🧠 Psikotest</div>
-      <div class="text-muted" style="margin-top:4px">Kandidat psikotest · IQ lolos otomatis ke Interview</div>
+      <div class="text-muted" style="margin-top:4px">
+        Kehadiran & hasil otomatis dari sheet psikotest · Email tersedia di kolom ini
+      </div>
     </div>
     <span class="view-count" id="psikotest-count">0 kandidat</span>
   </div>
+
+  <!-- Info sumber data psikotest -->
+  <div class="ps-sync-info">
+    ℹ️ Kehadiran, IQ, dan DISC dibaca otomatis dari Google Sheet Psikotest (Psikotes_Officer_System).
+    Kandidat yang namanya ada di sheet psikotest = <strong style="margin:0 4px">Hadir</strong>; yang tidak ada = <strong style="margin:0 4px">Tidak Hadir</strong>.
+  </div>
+
   <div class="toolbar">
     <select id="ps-filter-posisi" onchange="renderPsikotest()">
       <option value="">Semua Posisi</option>
+    </select>
+    <select id="ps-filter-hadir" onchange="renderPsikotest()">
+      <option value="">Semua Kehadiran</option>
+      <option value="hadir">✅ Hadir</option>
+      <option value="absen">❌ Tidak Hadir</option>
     </select>
     <input type="text" id="ps-search" placeholder="Cari nama..." oninput="renderPsikotest()">
   </div>
@@ -869,9 +850,10 @@ a:hover { text-decoration: underline; }
         <th>No. HP</th>
         <th>Email</th>
         <th>Tgl Lahir</th>
-        <th>Tgl Psikotest</th>
+        <th>Kehadiran</th>
         <th>Skor IQ</th>
-        <th>Keterangan</th>
+        <th>DISC</th>
+        <th>Keterangan IQ</th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -916,31 +898,6 @@ a:hover { text-decoration: underline; }
 </div>
 </div>
 
-<!-- ═══════════════════════ PSIKOTEST INPUT MODAL ═══════════════════════ -->
-<div class="modal-overlay" id="modal-psikotest">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-psikotest')">✕</button>
-    <h3>🧠 Input Data Psikotest</h3>
-    <div class="modal-sub" id="ps-modal-info">Kandidat: —</div>
-    <input type="hidden" id="ps-modal-row">
-
-    <label>Tanggal Psikotest</label>
-    <input type="date" id="ps-modal-tgl">
-
-    <label>Nilai IQ</label>
-    <input type="number" id="ps-modal-iq" min="0" max="200" placeholder="cth: 110" oninput="calcIQ()">
-
-    <div class="score-preview" id="ps-iq-preview">
-      IQ: <strong id="ps-iq-val">—</strong> · Kategori: <strong id="ps-iq-cat">—</strong>
-    </div>
-
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal('modal-psikotest')">Batal</button>
-      <button class="btn-save" onclick="savePsikotest()">Simpan</button>
-    </div>
-  </div>
-</div>
-
 <!-- ═══════════════════════ CONFIRM MODAL ═══════════════════════ -->
 <div class="modal-overlay" id="modal-confirm">
   <div class="modal" style="max-width:360px">
@@ -948,7 +905,42 @@ a:hover { text-decoration: underline; }
     <div class="modal-sub" id="confirm-msg">Yakin?</div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal('modal-confirm')">Batal</button>
-      <button class="btn-save" id="confirm-ok" onclick="">Ya, Lanjut</button>
+      <button class="btn-save" id="confirm-ok">Ya, Lanjut</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═════ TAMBAH POSISI MODAL ═════ -->
+<div class="modal-overlay" id="modal-add-posisi">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-add-posisi')">✕</button>
+    <h3>📋 Tambah Posisi Rekrutmen</h3>
+    <div class="modal-sub">Data tersimpan ke sheet tab "Posisi"</div>
+    <label>Nama Posisi</label>
+    <input type="text" id="ap-nama" placeholder="cth: AP Officer">
+    <label>Tanggal Permintaan</label>
+    <input type="date" id="ap-tgl-req">
+    <label>Jumlah Kebutuhan</label>
+    <input type="number" id="ap-jumlah" min="1" value="1">
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('modal-add-posisi')">Batal</button>
+      <button class="btn-save" onclick="saveNewPosisi()">Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═════ FULFIL POSISI MODAL ═════ -->
+<div class="modal-overlay" id="modal-fulfil-posisi">
+  <div class="modal" style="max-width:360px">
+    <button class="modal-close" onclick="closeModal('modal-fulfil-posisi')">✕</button>
+    <h3>✅ Posisi Terpenuhi</h3>
+    <div class="modal-sub" id="fulfil-posisi-info">—</div>
+    <input type="hidden" id="fulfil-posisi-row">
+    <label>Tanggal Terpenuhi</label>
+    <input type="date" id="fulfil-tgl">
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('modal-fulfil-posisi')">Batal</button>
+      <button class="btn-save" onclick="saveFulfilPosisi()">Simpan</button>
     </div>
   </div>
 </div>
@@ -957,12 +949,9 @@ a:hover { text-decoration: underline; }
 // ═══════════════════════════════════════════════════════════════
 // DATA & STATE
 // ═══════════════════════════════════════════════════════════════
-let apiUrl  = localStorage.getItem('apiUrl') || '';
-let allData  = [];   // semua kandidat dari sheet
-let allPosisi = [];  // semua posisi rekrutmen dari sheet tab "Posisi"
-
-// Pipeline stages yang tersimpan di sheet via rekStage column
-// Baru | Job Test | Psikotest | Interview | Disimpan | Reject | Join
+let apiUrl    = localStorage.getItem('apiUrl') || '';
+let allData   = [];   // semua kandidat dari sheet rekrutmen
+let allPosisi = [];   // semua posisi rekrutmen dari sheet tab "Posisi"
 
 // ═══════════════════════════════════════════════════════════════
 // INIT
@@ -1002,19 +991,13 @@ function jsonp(url, onOk, onErr) {
   const cb = 'cb_' + Date.now() + '_' + Math.floor(Math.random()*9999);
   const tag = document.createElement('script');
   let done = false;
-  window[cb] = function(data) {
-    done = true; cleanup(); onOk(data);
-  };
+  window[cb] = function(data) { done = true; cleanup(); onOk(data); };
   function cleanup() {
     delete window[cb];
     if (tag.parentNode) tag.parentNode.removeChild(tag);
   }
-  tag.onerror = function() {
-    if (!done) { done = true; cleanup(); if (onErr) onErr(); }
-  };
-  setTimeout(function() {
-    if (!done) { done = true; cleanup(); if (onErr) onErr(); }
-  }, 15000);
+  tag.onerror = function() { if (!done) { done = true; cleanup(); if (onErr) onErr(); } };
+  setTimeout(function() { if (!done) { done = true; cleanup(); if (onErr) onErr(); } }, 15000);
   tag.src = url + (url.includes('?') ? '&' : '?') + 'callback=' + cb;
   document.head.appendChild(tag);
 }
@@ -1027,8 +1010,8 @@ function loadData() {
   setStatus('loading', '⏳ Memuat...');
   jsonp(apiUrl + '?action=listRekrutmen&t=' + Date.now(), function(data) {
     if (data.error) { setStatus('err', '❌ ' + data.error); return; }
-    allData = data.kandidats || [];
-    allPosisi = data.posisi || [];
+    allData   = data.kandidats || [];
+    allPosisi = data.posisi    || [];
     setStatus('ok', '✓ ' + allData.length + ' kandidat · ' + allPosisi.length + ' posisi');
     document.getElementById('sync-badge').textContent = 'Sync: ' + new Date().toLocaleTimeString('id-ID');
     renderAll();
@@ -1038,7 +1021,7 @@ function loadData() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// RENDER ALL VIEWS
+// RENDER ALL
 // ═══════════════════════════════════════════════════════════════
 function renderAll() {
   renderDashboard();
@@ -1058,7 +1041,6 @@ function populateFilters() {
     el.innerHTML = '<option value="">Semua Posisi</option>' +
       positions.map(p => `<option value="${p}" ${p===cur?'selected':''}>${p}</option>`).join('');
   });
-  // Pendidikan — dinamis dari data aktual
   const pdEl = document.getElementById('k-filter-pendidikan');
   if (pdEl) {
     const cur = pdEl.value;
@@ -1106,22 +1088,17 @@ function renderDashboard() {
   renderOpenList();
 }
 
-function getRecords() { return allPosisi; }
-
 function calcDays(d1, d2) {
   if (!d1 || !d2) return null;
-  const a = new Date(d1), b = new Date(d2);
-  return Math.round((b - a) / 86400000);
+  return Math.round((new Date(d2) - new Date(d1)) / 86400000);
 }
-
 function daysSince(d) {
   if (!d) return null;
   return Math.round((Date.now() - new Date(d)) / 86400000);
 }
 
-// Funnel — dropdown per posisi, filter kandidat sejak tgl request
 function renderFunnel() {
-  const sel    = document.getElementById('funnel-select');
+  const sel = document.getElementById('funnel-select');
   const stagesEl = document.getElementById('funnel-stages');
   if (!allData.length && !allPosisi.length) {
     stagesEl.innerHTML = '<div class="empty-state"><div class="empty-icon">📊</div><div class="empty-msg">Sambungkan sheet untuk melihat funnel</div></div>';
@@ -1136,16 +1113,12 @@ function renderFunnel() {
 
 function onFunnelSelect(sel) {
   drawFunnel(sel.value);
-  // Show tgl request for selected posisi
   const pos = allPosisi.find(p => p.nama === sel.value);
   const info = document.getElementById('funnel-req-date');
   info.textContent = pos && pos.tglReq ? `Permintaan: ${fmtDate(pos.tglReq)}` : '';
 }
 
-let _activeFunnelPos = '';
-
 function drawFunnel(posFilter) {
-  // Filter kandidat by posisi AND by tglReq (hanya kandidat yang daftar sejak posisi dibuka)
   let data = posFilter ? allData.filter(k => k.posisi === posFilter) : allData;
   if (posFilter) {
     const pos = allPosisi.find(p => p.nama === posFilter);
@@ -1168,39 +1141,32 @@ function drawFunnel(posFilter) {
     { label: 'Interview',   key: 'Interview', color: '#8e44ad' },
     { label: 'Join',        key: 'Join',      color: '#2d6a4f' },
   ];
-
+  const order = ['Baru','Disimpan','Job Test','Psikotest','Interview','Join','Reject'];
   const counts = stages.map(s => {
     if (s.key === null) return total;
     return data.filter(k => {
       const st = k.rekStage || 'Baru';
-      // Count everyone at this stage or beyond
-      const order = ['Baru','Disimpan','Job Test','Psikotest','Interview','Join','Reject'];
-      const stIdx = order.indexOf(st);
-      const sIdx  = order.indexOf(s.key);
-      return stIdx >= sIdx && st !== 'Reject';
+      return order.indexOf(st) >= order.indexOf(s.key) && st !== 'Reject';
     }).length;
   });
 
   const maxCount = counts[0] || 1;
   let html = '';
   counts.forEach((c, i) => {
-    const pct   = Math.round(c / maxCount * 100);
-    const drop  = i > 0 && counts[i-1] ? Math.round((1 - c/counts[i-1])*100) : null;
-    const s     = stages[i];
+    const pct  = Math.round(c / maxCount * 100);
+    const drop = i > 0 && counts[i-1] ? Math.round((1 - c/counts[i-1])*100) : null;
+    const s    = stages[i];
     html += `
       <div class="funnel-row">
         <div class="funnel-lbl">${s.label}</div>
         <div class="funnel-track">
-          <div class="funnel-fill" style="width:${Math.max(pct,8)}%;background:${s.color}">
-            ${c}
-          </div>
+          <div class="funnel-fill" style="width:${Math.max(pct,8)}%;background:${s.color}">${c}</div>
         </div>
         <div class="funnel-pct">${pct}%</div>
         ${drop !== null ? `<div class="funnel-drop">↓${drop}%</div>` : '<div class="funnel-drop"></div>'}
       </div>`;
   });
 
-  // Reject count
   const rejected = data.filter(k => (k.rekStage||'Baru') === 'Reject').length;
   if (rejected) {
     html += `<div class="funnel-row" style="margin-top:6px">
@@ -1211,7 +1177,6 @@ function drawFunnel(posFilter) {
       <div class="funnel-pct"></div><div class="funnel-drop"></div>
     </div>`;
   }
-
   document.getElementById('funnel-stages').innerHTML = html;
 }
 
@@ -1240,9 +1205,8 @@ function renderOpenList() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// KANDIDAT VIEW
+// KANDIDAT VIEW  (Email dihapus dari tabel)
 // ═══════════════════════════════════════════════════════════════
-// ── Bulk Reject State ──────────────────────────────────────────
 let bulkUndoSnapshot = null;
 let bulkUndoTimer    = null;
 
@@ -1254,9 +1218,8 @@ function renderKandidat() {
   const search      = (document.getElementById('k-search')?.value          || '').toLowerCase().trim();
   const PROCESSED   = ['Job Test','Psikotest','Interview','Join','Reject'];
 
-  // Tampilkan/sembunyikan tombol reset
   const hasFilter = posFilter || stageFilter !== 'pending' || pendFilter || provFilter || search;
-  const resetBtn = document.getElementById('k-reset-btn');
+  const resetBtn  = document.getElementById('k-reset-btn');
   if (resetBtn) resetBtn.style.display = hasFilter ? 'block' : 'none';
 
   let data = allData.filter(k => {
@@ -1280,22 +1243,21 @@ function renderKandidat() {
 
   document.getElementById('kandidat-count').textContent = data.length + ' kandidat';
 
-  // Reset checkbox state saat re-render
   const chkAll = document.getElementById('k-check-all');
   if (chkAll) chkAll.checked = false;
   updateBulkBar();
 
   const tbody = document.getElementById('kandidat-body');
   if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="12"><div class="empty-state"><div class="empty-icon">📭</div><div class="empty-msg">Tidak ada kandidat ditemukan</div></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="11"><div class="empty-state"><div class="empty-icon">📭</div><div class="empty-msg">Tidak ada kandidat ditemukan</div></div></td></tr>';
     return;
   }
 
   tbody.innerHTML = data.map(k => {
-    const stage    = k.rekStage || 'Baru';
-    const badgeCls = stageBadge(stage);
-    const prov     = k.provinsi || '';
-    const isKepri  = prov.toLowerCase().includes('kepulauan riau') || prov.toLowerCase().includes('kepri');
+    const stage     = k.rekStage || 'Baru';
+    const badgeCls  = stageBadge(stage);
+    const prov      = k.provinsi || '';
+    const isKepri   = prov.toLowerCase().includes('kepulauan riau') || prov.toLowerCase().includes('kepri');
     const provBadge = prov
       ? `<span class="badge ${isKepri ? 'badge-kepri' : 'badge-luar'}">${isKepri ? 'Kepri' : 'Luar Kepri'}</span>`
       : '<span class="text-muted">—</span>';
@@ -1303,16 +1265,16 @@ function renderKandidat() {
       ? `<a href="${k.cvLink}" target="_blank" style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;background:#fef3c7;border-radius:4px;font-size:0.72rem;font-weight:600;color:#92400e">📄 Lihat CV</a>`
       : '<span class="text-muted">—</span>';
     const wa = k.wa ? `<a href="https://wa.me/${k.wa.replace(/\D/g,'')}" target="_blank" style="color:var(--green);font-weight:500">📱 ${k.wa}</a>` : '—';
-    // Highlight hasil pencarian pada nama & jurusan
+
     const hlNama    = search ? hlText(k.nama    || '—', search) : (k.nama    || '—');
     const hlJurusan = search ? hlText(k.jurusan || '—', search) : (k.jurusan || '—');
 
+    // KOLOM EMAIL DIHAPUS — tersedia di menu Psikotest
     return `<tr id="row-k-${k.row}">
       <td style="text-align:center"><input type="checkbox" class="k-row-check" value="${k.row}" onchange="updateBulkBar()"></td>
       <td class="fw6">${hlNama}</td>
       <td>${k.posisi || '—'}</td>
       <td class="nowrap">${wa}</td>
-      <td class="text-muted" style="font-size:0.75rem">${k.email || '—'}</td>
       <td>${provBadge}</td>
       <td style="font-size:0.76rem">${k.pendidikan || '—'}</td>
       <td style="font-size:0.76rem">${hlJurusan}</td>
@@ -1333,7 +1295,6 @@ function renderKandidat() {
   }).join('');
 }
 
-// Highlight teks yang match search query
 function hlText(text, query) {
   if (!query || !text) return text;
   const idx = text.toLowerCase().indexOf(query);
@@ -1343,10 +1304,10 @@ function hlText(text, query) {
     text.slice(idx + query.length);
 }
 
-// Reset semua filter kandidat ke default
 function resetFilterKandidat() {
-  const ids = ['k-filter-posisi','k-filter-pendidikan','k-filter-provinsi'];
-  ids.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  ['k-filter-posisi','k-filter-pendidikan','k-filter-provinsi'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
   const stage = document.getElementById('k-filter-stage');
   if (stage) stage.value = 'pending';
   const search = document.getElementById('k-search');
@@ -1369,7 +1330,6 @@ function handleKandidatAction(sel, row) {
   });
 }
 
-// ── Bulk Reject Logic ──────────────────────────────────────────
 function toggleCheckAll(master) {
   document.querySelectorAll('.k-row-check').forEach(cb => cb.checked = master.checked);
   updateBulkBar();
@@ -1377,18 +1337,15 @@ function toggleCheckAll(master) {
 
 function updateBulkBar() {
   const checked = [...document.querySelectorAll('.k-row-check:checked')];
-  const bar      = document.getElementById('bulk-bar');
-  const countEl  = document.getElementById('bulk-count');
+  const bar     = document.getElementById('bulk-bar');
+  const countEl = document.getElementById('bulk-count');
   if (!bar) return;
   if (checked.length > 0) {
     bar.style.display = 'flex';
     countEl.textContent = checked.length;
   } else {
-    // Sembunyikan hanya jika tidak sedang menampilkan undo
     const undoWrap = document.getElementById('bulk-undo-wrap');
-    if (!undoWrap || undoWrap.style.display === 'none') {
-      bar.style.display = 'none';
-    }
+    if (!undoWrap || undoWrap.style.display === 'none') bar.style.display = 'none';
   }
 }
 
@@ -1396,11 +1353,9 @@ function clearBulkSelect() {
   document.querySelectorAll('.k-row-check').forEach(cb => cb.checked = false);
   const chkAll = document.getElementById('k-check-all');
   if (chkAll) chkAll.checked = false;
-  // Sembunyikan bar hanya jika tidak ada undo aktif
   const undoWrap = document.getElementById('bulk-undo-wrap');
-  if (!undoWrap || undoWrap.style.display === 'none') {
+  if (!undoWrap || undoWrap.style.display === 'none')
     document.getElementById('bulk-bar').style.display = 'none';
-  }
 }
 
 function executeBulkReject() {
@@ -1409,19 +1364,12 @@ function executeBulkReject() {
   const rows = checked.map(cb => parseInt(cb.value));
   if (!confirm(`Yakin reject ${rows.length} kandidat? Bisa di-undo dalam 30 detik.`)) return;
 
-  // Simpan snapshot untuk undo
   bulkUndoSnapshot = rows.map(row => {
     const k = allData.find(x => x.row === row);
     return { row, prevStage: k ? (k.rekStage || 'Baru') : 'Baru' };
   });
+  rows.forEach(row => { const k = allData.find(x => x.row === row); if (k) k.rekStage = 'Reject'; });
 
-  // Update lokal optimistik
-  rows.forEach(row => {
-    const k = allData.find(x => x.row === row);
-    if (k) k.rekStage = 'Reject';
-  });
-
-  // Kirim ke Apps Script
   if (apiUrl) {
     const cbName = 'bulkCb_' + Date.now();
     window[cbName] = function() { delete window[cbName]; };
@@ -1433,8 +1381,7 @@ function executeBulkReject() {
   clearBulkSelect();
   renderAll();
 
-  // Tampilkan undo bar selama 30 detik
-  const bar      = document.getElementById('bulk-bar');
+  const bar = document.getElementById('bulk-bar');
   const undoWrap = document.getElementById('bulk-undo-wrap');
   const undoTimer = document.getElementById('bulk-undo-timer');
   bar.style.display = 'flex';
@@ -1471,7 +1418,6 @@ function undoBulkReject() {
       document.head.appendChild(s);
     }
   });
-
   if (bulkUndoTimer) clearInterval(bulkUndoTimer);
   bulkUndoSnapshot = null;
   document.getElementById('bulk-undo-wrap').style.display = 'none';
@@ -1503,10 +1449,10 @@ function renderJobTest() {
   }
 
   tbody.innerHTML = data.map(k => {
-    const jtScore  = k.jobTestScore !== null && k.jobTestScore !== undefined ? k.jobTestScore : '';
-    const jtPass   = jtScore !== '' ? (parseFloat(jtScore) >= 60) : null;
-    const jtHadir  = k.jobTestHadir || '';
-    const hasil    = jtPass === null ? '' : (jtPass ? '<span class="badge badge-green">LULUS</span>' : '<span class="badge badge-red">TIDAK LULUS</span>');
+    const jtScore = k.jobTestScore !== null && k.jobTestScore !== undefined ? k.jobTestScore : '';
+    const jtPass  = jtScore !== '' ? (parseFloat(jtScore) >= 60) : null;
+    const jtHadir = k.jobTestHadir || '';
+    const hasil   = jtPass === null ? '' : (jtPass ? '<span class="badge badge-green">LULUS</span>' : '<span class="badge badge-red">TIDAK LULUS</span>');
     return `<tr id="row-jt-${k.row}">
       <td class="fw6">${k.nama || '—'}</td>
       <td>${k.posisi || '—'}</td>
@@ -1514,8 +1460,8 @@ function renderJobTest() {
       <td>
         <select class="action-select" style="min-width:110px" onchange="saveJTHadir(this,${k.row})">
           <option value="" ${!jtHadir?'selected':''}>— Kehadiran —</option>
-          <option value="Hadir"   ${jtHadir==='Hadir'?'selected':''}>✅ Hadir</option>
-          <option value="Tidak Hadir" ${jtHadir==='Tidak Hadir'?'selected':''}>❌ Tidak Hadir</option>
+          <option value="Hadir"        ${jtHadir==='Hadir'?'selected':''}>✅ Hadir</option>
+          <option value="Tidak Hadir"  ${jtHadir==='Tidak Hadir'?'selected':''}>❌ Tidak Hadir</option>
         </select>
       </td>
       <td>
@@ -1544,12 +1490,10 @@ function saveJTHadir(sel, row) {
   const k = allData.find(x => x.row === row);
   if (k) k.jobTestHadir = sel.value;
 }
-
 function saveJTScore(input, row) {
   const k = allData.find(x => x.row === row);
   if (k) k.jobTestScore = parseFloat(input.value) || 0;
 }
-
 function saveJTAll(row) {
   const k = allData.find(x => x.row === row);
   if (!k) return;
@@ -1562,7 +1506,6 @@ function saveJTAll(row) {
     renderJobTest();
   }, function() { alert('Gagal menyimpan.'); });
 }
-
 function handleJTAction(sel, row) {
   const action = sel.value;
   if (!action) return;
@@ -1580,13 +1523,31 @@ function handleJTAction(sel, row) {
 // ═══════════════════════════════════════════════════════════════
 // PSIKOTEST VIEW
 // ═══════════════════════════════════════════════════════════════
-function renderPsikotest() {
-  const posFilter = document.getElementById('ps-filter-posisi')?.value || '';
-  const search    = (document.getElementById('ps-search')?.value || '').toLowerCase();
+/*
+  KEHADIRAN OTOMATIS:
+  Apps Script harus mengembalikan field berikut untuk tiap kandidat di stage Psikotest:
+    - psikotestHadir  : boolean  (true jika nama ada di sheet Psikotest, false jika tidak)
+    - psikotestIQ     : number   (dari sheet Psikotest, null jika tidak hadir)
+    - psikotestDISC   : string   (cth: "CS", "DI", null jika tidak ada)
+    - psikotestIKat   : string   (kategori IQ cth: "Rata-rata", null jika tidak hadir)
+    - psikotestTgl    : string   (tanggal tes)
 
-  const data = allData.filter(k => {
+  Logic di Apps Script:
+    1. Ambil semua nama dari sheet psikotest (kolom "n")
+    2. Untuk setiap kandidat stage Psikotest: cek apakah nama ada di list sheet psikotest
+    3. Jika ada: set psikotestHadir=true, isi IQ, DISC, dll dari sheet psikotest
+    4. Jika tidak: set psikotestHadir=false, IQ=null, DISC=null
+*/
+function renderPsikotest() {
+  const posFilter   = document.getElementById('ps-filter-posisi')?.value || '';
+  const hadirFilter = document.getElementById('ps-filter-hadir')?.value  || '';
+  const search      = (document.getElementById('ps-search')?.value || '').toLowerCase();
+
+  let data = allData.filter(k => {
     if ((k.rekStage||'Baru') !== 'Psikotest') return false;
     if (posFilter && k.posisi !== posFilter) return false;
+    if (hadirFilter === 'hadir'  && !k.psikotestHadir)  return false;
+    if (hadirFilter === 'absen'  && k.psikotestHadir)   return false;
     if (search && !(k.nama||'').toLowerCase().includes(search)) return false;
     return true;
   });
@@ -1595,82 +1556,79 @@ function renderPsikotest() {
   const tbody = document.getElementById('psikotest-body');
 
   if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="10"><div class="empty-state"><div class="empty-icon">🧠</div><div class="empty-msg">Belum ada kandidat di Psikotest.</div></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="11"><div class="empty-state"><div class="empty-icon">🧠</div><div class="empty-msg">Belum ada kandidat di Psikotest.</div></div></td></tr>';
     return;
   }
 
   tbody.innerHTML = data.map(k => {
-    const iq    = k.psikotestIQ !== null && k.psikotestIQ !== undefined ? k.psikotestIQ : null;
-    const tgl   = k.psikotestTgl || '';
-    // tgl lahir: ambil dari data kandidat (kolom tglLahir di sheet form responses)
-    const lahir = k.tglLahir || '—';
-    const iqNum = iq !== null ? parseFloat(iq) : NaN;
+    // Kehadiran: otomatis dari sheet psikotest (field psikotestHadir di-set oleh Apps Script)
+    const hadir   = k.psikotestHadir === true || k.psikotestHadir === 'true' || k.psikotestHadir === 1;
+    const hadirBadge = hadir
+      ? `<span class="hadir-auto hadir">✅ Hadir</span>`
+      : `<span class="hadir-auto absen">❌ Tidak Hadir</span>`;
+
+    // IQ dari sheet psikotest
+    const iqNum   = hadir && k.psikotestIQ !== null && k.psikotestIQ !== undefined
+                    ? parseFloat(k.psikotestIQ) : NaN;
+    const iqColor = !isNaN(iqNum) ? (iqNum >= 90 ? '#155724' : '#856404') : '#999';
     const iqBadge = !isNaN(iqNum)
-      ? `<span class="iq-score" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:${iqNum>=90?'#155724':'#856404'}">${iqNum}</span>`
+      ? `<span class="iq-score" style="color:${iqColor}">${iqNum}</span>`
       : '<span class="text-muted">—</span>';
+
+    // DISC dari sheet psikotest
+    const disc    = k.psikotestDISC || '';
+    const discBadge = disc
+      ? `<span class="disc-badge">${disc.split('').map(d =>
+          `<span class="disc-${d.toLowerCase()}">${d}</span>`).join('')}</span>`
+      : '<span class="text-muted">—</span>';
+
+    // Keterangan IQ
+    const iKat    = k.psikotestIKat || (hadir && !isNaN(iqNum) ? iqKat(iqNum) : '');
+    const lolos   = !isNaN(iqNum) && iqNum >= 90;
+
+    // Keterangan (Lolos/Tidak Lolos/Belum Hadir)
+    let ketBadge;
+    if (!hadir) {
+      ketBadge = '<span class="badge badge-gray">Tidak Hadir</span>';
+    } else if (isNaN(iqNum)) {
+      ketBadge = '<span class="badge badge-gray">Belum Input</span>';
+    } else {
+      ketBadge = lolos
+        ? '<span class="badge badge-green">Lolos</span>'
+        : '<span class="badge badge-red">Tidak Lolos</span>';
+    }
+
     return `<tr id="row-ps-${k.row}">
       <td class="fw6">${k.nama || '—'}</td>
       <td>${k.posisi || '—'}</td>
       <td>${k.jurusan || '—'}</td>
       <td>${k.wa || '—'}</td>
       <td class="text-muted" style="font-size:0.75rem">${k.email || '—'}</td>
-      <td class="text-muted">${lahir}</td>
-      <td class="text-muted">${tgl ? fmtDate(tgl) : '—'}</td>
+      <td class="text-muted">${k.tglLahir || '—'}</td>
+      <td>${hadirBadge}</td>
       <td>${iqBadge}</td>
-      <td>
-        ${!isNaN(iqNum)
-          ? (iqNum >= 90
-            ? '<span class="badge badge-green">Lolos</span>'
-            : '<span class="badge badge-red">Tidak Lolos</span>')
-          : '<span class="badge badge-gray">Belum Input</span>'
-        }
-      </td>
+      <td>${discBadge}</td>
+      <td>${iKat ? `<span class="text-muted" style="font-size:0.73rem">${iKat}</span>` : '—'}</td>
       <td class="nowrap">
-        <button class="save-btn sm" onclick="openPsModal(${k.row})">✏️ Input</button>
-        ${!isNaN(iqNum) && iqNum >= 90
-          ? `<button class="save-btn sm" style="background:var(--green);margin-left:4px" onclick="advancePsikotest(${k.row})">→ Interview</button>`
+        ${lolos
+          ? `<button class="save-btn sm" style="background:var(--green)" onclick="advancePsikotest(${k.row})">→ Interview</button>`
           : ''}
-        <button class="save-btn sm" style="background:var(--red);margin-left:4px" onclick="rejectPs(${k.row})">✕</button>
+        ${hadir
+          ? `<button class="save-btn sm" style="background:var(--red);margin-left:4px" onclick="rejectPs(${k.row})">✕ Reject</button>`
+          : ''}
       </td>
     </tr>`;
   }).join('');
 }
 
-function openPsModal(row) {
-  const k = allData.find(x => x.row === row);
-  if (!k) return;
-  document.getElementById('ps-modal-row').value = row;
-  document.getElementById('ps-modal-info').textContent = k.nama + ' · ' + k.posisi;
-  document.getElementById('ps-modal-tgl').value = k.psikotestTgl || '';
-  document.getElementById('ps-modal-iq').value  = k.psikotestIQ || '';
-  document.getElementById('ps-iq-preview').classList.remove('show');
-  openModal('modal-psikotest');
-}
-
-function calcIQ() {
-  const iq = parseFloat(document.getElementById('ps-modal-iq').value);
-  if (isNaN(iq)) return;
-  const cat = iq >= 130 ? 'Sangat Superior' : iq >= 120 ? 'Superior' : iq >= 110 ? 'Di atas Rata-rata' :
-              iq >= 90  ? 'Rata-rata' : iq >= 80 ? 'Di bawah Rata-rata' : 'Perlu Perhatian';
-  document.getElementById('ps-iq-val').textContent = iq;
-  document.getElementById('ps-iq-cat').textContent = cat;
-  document.getElementById('ps-iq-preview').classList.add('show');
-}
-
-function savePsikotest() {
-  const row = parseInt(document.getElementById('ps-modal-row').value);
-  const tgl = document.getElementById('ps-modal-tgl').value;
-  const iq  = document.getElementById('ps-modal-iq').value;
-  const k   = allData.find(x => x.row === row);
-
-  const params = `action=updatePsikotest&row=${row}&psikotestTgl=${encodeURIComponent(tgl)}&psikotestIQ=${iq}&t=${Date.now()}`;
-  jsonp(apiUrl + '?' + params, function(res) {
-    if (res.error) { alert('Gagal: ' + res.error); return; }
-    if (k) { k.psikotestTgl = tgl; k.psikotestIQ = parseFloat(iq); }
-    closeModal('modal-psikotest');
-    showToast('Data Psikotest tersimpan ✓');
-    renderPsikotest();
-  }, function() { alert('Gagal menyimpan.'); });
+// Kalkulasi kategori IQ lokal (fallback jika Apps Script tidak return psikotestIKat)
+function iqKat(iq) {
+  if (iq >= 130) return 'Sangat Superior';
+  if (iq >= 120) return 'Superior';
+  if (iq >= 110) return 'Di atas Rata-rata';
+  if (iq >= 90)  return 'Rata-rata';
+  if (iq >= 80)  return 'Di bawah Rata-rata';
+  return 'Perlu Perhatian';
 }
 
 function advancePsikotest(row) {
@@ -1715,7 +1673,7 @@ function renderInterview() {
   }
 
   tbody.innerHTML = data.map(k => {
-    const ivHasil  = k.interviewHasil || '';
+    const ivHasil   = k.interviewHasil   || '';
     const ivCatatan = k.interviewCatatan || '';
     return `<tr id="row-iv-${k.row}">
       <td class="fw6">${k.nama || '—'}</td>
@@ -1724,9 +1682,9 @@ function renderInterview() {
       <td>
         <select class="action-select" style="min-width:150px" onchange="saveIVHasil(this,${k.row})">
           <option value="" ${!ivHasil?'selected':''}>— Hasil Interview —</option>
-          <option value="Lolos" ${ivHasil==='Lolos'?'selected':''}>✅ Lolos</option>
+          <option value="Lolos"           ${ivHasil==='Lolos'?'selected':''}>✅ Lolos</option>
           <option value="Dipertimbangkan" ${ivHasil==='Dipertimbangkan'?'selected':''}>🟡 Dipertimbangkan</option>
-          <option value="Gagal" ${ivHasil==='Gagal'?'selected':''}>❌ Gagal</option>
+          <option value="Gagal"           ${ivHasil==='Gagal'?'selected':''}>❌ Gagal</option>
         </select>
       </td>
       <td>
@@ -1757,7 +1715,6 @@ function saveIVCatatan(input, row) {
   const k = allData.find(x => x.row === row);
   if (k) k.interviewCatatan = input.value;
 }
-
 function saveIVAll(row) {
   const k = allData.find(x => x.row === row);
   if (!k) return;
@@ -1767,15 +1724,12 @@ function saveIVAll(row) {
     showToast('Data Interview tersimpan ✓');
   }, function() { alert('Gagal menyimpan.'); });
 }
-
 function handleIVAction(sel, row) {
   const action = sel.value;
   if (!action) return;
   const k = allData.find(x => x.row === row);
   if (!k) return;
-  const msg = action === 'Join'
-    ? `Konfirmasi: ${k.nama} diterima JOIN?`
-    : `Reject ${k.nama}?`;
+  const msg = action === 'Join' ? `Konfirmasi: ${k.nama} diterima JOIN?` : `Reject ${k.nama}?`;
   if (!confirm(msg)) { sel.value = ''; return; }
   updateStage(row, action, function() {
     k.rekStage = action;
@@ -1802,37 +1756,8 @@ function updateStage(row, stage, cb) {
 function openModal(id)  { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 document.querySelectorAll('.modal-overlay').forEach(el => {
-  el.addEventListener('click', function(e) {
-    if (e.target === this) this.classList.remove('open');
-  });
+  el.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('open'); });
 });
-
-// ═══════════════════════════════════════════════════════════════
-// UTILS
-// ═══════════════════════════════════════════════════════════════
-function setText(id, val) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = val;
-}
-
-function fmtDate(d) {
-  if (!d) return '—';
-  try {
-    const dt = new Date(d);
-    return dt.toLocaleDateString('id-ID', { day:'2-digit', month:'short', year:'numeric' });
-  } catch(e) { return d; }
-}
-
-function escQ(s) { return (s||'').replace(/'/g,"&#39;").replace(/"/g,'&quot;'); }
-
-function stageBadge(stage) {
-  const map = {
-    'Baru':'badge-brown','Job Test':'badge-yellow','Psikotest':'badge-blue',
-    'Interview':'badge badge-blue','Disimpan':'badge-gray',
-    'Reject':'badge-red','Join':'badge-green'
-  };
-  return map[stage] || 'badge-gray';
-}
 
 // ═══════════════════════════════════════════════════════════════
 // POSISI TABLE
@@ -1865,9 +1790,9 @@ function renderPosisiTable() {
 }
 
 function openAddPosisi() {
-  document.getElementById('ap-nama').value = '';
+  document.getElementById('ap-nama').value    = '';
   document.getElementById('ap-tgl-req').value = new Date().toISOString().split('T')[0];
-  document.getElementById('ap-jumlah').value = 1;
+  document.getElementById('ap-jumlah').value  = 1;
   openModal('modal-add-posisi');
 }
 
@@ -1920,6 +1845,32 @@ function deletePosisi(row, nama) {
   }, function() { alert('Gagal.'); });
 }
 
+// ═══════════════════════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════════════════════
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+function fmtDate(d) {
+  if (!d) return '—';
+  try {
+    return new Date(d).toLocaleDateString('id-ID', { day:'2-digit', month:'short', year:'numeric' });
+  } catch(e) { return d; }
+}
+
+function escQ(s) { return (s||'').replace(/'/g,"&#39;").replace(/"/g,'&quot;'); }
+
+function stageBadge(stage) {
+  const map = {
+    'Baru':'badge-brown','Job Test':'badge-yellow','Psikotest':'badge-blue',
+    'Interview':'badge-blue','Disimpan':'badge-gray',
+    'Reject':'badge-red','Join':'badge-green'
+  };
+  return map[stage] || 'badge-gray';
+}
+
 function showToast(msg) {
   const t = document.createElement('div');
   t.textContent = msg;
@@ -1934,51 +1885,6 @@ function showToast(msg) {
   document.body.appendChild(t);
   setTimeout(() => { t.style.opacity='0'; setTimeout(() => t.remove(), 300); }, 2500);
 }
-
-// allPosisi sekarang dari sheet — tidak perlu localStorage
-
 </script>
-
-<!-- ═════ TAMBAH POSISI MODAL ═════ -->
-<div class="modal-overlay" id="modal-add-posisi">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-add-posisi')">✕</button>
-    <h3>📋 Tambah Posisi Rekrutmen</h3>
-    <div class="modal-sub">Data tersimpan ke sheet tab "Posisi"</div>
-
-    <label>Nama Posisi</label>
-    <input type="text" id="ap-nama" placeholder="cth: AP Officer">
-
-    <label>Tanggal Permintaan</label>
-    <input type="date" id="ap-tgl-req">
-
-    <label>Jumlah Kebutuhan</label>
-    <input type="number" id="ap-jumlah" min="1" value="1">
-
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal('modal-add-posisi')">Batal</button>
-      <button class="btn-save" onclick="saveNewPosisi()">Simpan</button>
-    </div>
-  </div>
-</div>
-
-<!-- ═════ FULFIL POSISI MODAL ═════ -->
-<div class="modal-overlay" id="modal-fulfil-posisi">
-  <div class="modal" style="max-width:360px">
-    <button class="modal-close" onclick="closeModal('modal-fulfil-posisi')">✕</button>
-    <h3>✅ Posisi Terpenuhi</h3>
-    <div class="modal-sub" id="fulfil-posisi-info">—</div>
-    <input type="hidden" id="fulfil-posisi-row">
-
-    <label>Tanggal Terpenuhi</label>
-    <input type="date" id="fulfil-tgl">
-
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal('modal-fulfil-posisi')">Batal</button>
-      <button class="btn-save" onclick="saveFulfilPosisi()">Simpan</button>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
