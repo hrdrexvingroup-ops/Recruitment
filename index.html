@@ -1260,11 +1260,14 @@ function renderKandidat() {
     const badgeCls  = stageBadge(stage);
     const prov      = k.provinsi || '';
     const isKepri   = prov.toLowerCase().includes('kepulauan riau') || prov.toLowerCase().includes('kepri');
+    const provLabel = prov
+      ? (isKepri ? 'Kepri' : prov)   // Kepri → singkat; lainnya → tampilkan nilai asli
+      : '';
     const provBadge = prov
-      ? `<span class="badge ${isKepri ? 'badge-kepri' : 'badge-luar'}">${isKepri ? 'Kepri' : 'Luar Kepri'}</span>`
+      ? `<span class="badge ${isKepri ? 'badge-kepri' : 'badge-luar'}" title="${prov}">${provLabel}</span>`
       : '<span class="text-muted">—</span>';
     const cvLink = k.cvLink
-      ? `<a href="${k.cvLink}" target="_blank" style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;background:#fef3c7;border-radius:4px;font-size:0.72rem;font-weight:600;color:#92400e">📄 Lihat CV</a>`
+      ? `<button onclick="previewCV('${k.cvLink.replace(/'/g,"\\'")}','${escQ(k.nama)}')" style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;background:#fef3c7;border-radius:4px;font-size:0.72rem;font-weight:600;color:#92400e;border:none;cursor:pointer">📄 Lihat CV</button>`
       : '<span class="text-muted">—</span>';
     const wa = k.wa ? `<a href="https://wa.me/${k.wa.replace(/\D/g,'')}" target="_blank" style="color:var(--green);font-weight:500">📱 ${k.wa}</a>` : '—';
 
@@ -1891,6 +1894,48 @@ function showToast(msg) {
   document.body.appendChild(t);
   setTimeout(() => { t.style.opacity='0'; setTimeout(() => t.remove(), 300); }, 2500);
 }
+
+// ═══════════════════════════════════════════════════════════════
+// CV PREVIEW
+// ═══════════════════════════════════════════════════════════════
+function previewCV(url, nama) {
+  if (!url) return;
+  document.getElementById('cv-preview-title').textContent = 'CV — ' + (nama || '');
+  document.getElementById('cv-preview-link').href = url;
+  let embedUrl = url;
+  const driveMatch = url.match(/\/file\/d\/([^/]+)/);
+  if (driveMatch) {
+    embedUrl = 'https://drive.google.com/file/d/' + driveMatch[1] + '/preview';
+  } else if (url.includes('docs.google.com')) {
+    embedUrl = url.replace(/\/edit.*$/, '/preview');
+  }
+  document.getElementById('cv-preview-iframe').src = embedUrl;
+  openModal('modal-cv-preview');
+}
 </script>
+<!-- ═════ CV PREVIEW MODAL ═════ -->
+<div class="modal-overlay" id="modal-cv-preview">
+  <div class="modal" style="max-width:860px;width:95%;padding:0;overflow:hidden;border-radius:var(--radius)">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--brown);color:#fff">
+      <span style="font-family:'Playfair Display',serif;font-size:0.95rem" id="cv-preview-title">CV Preview</span>
+      <div style="display:flex;gap:10px;align-items:center">
+        <a id="cv-preview-link" href="#" target="_blank"
+           style="font-size:0.75rem;color:rgba(255,255,255,0.75);text-decoration:none;padding:4px 12px;border:1px solid rgba(255,255,255,0.3);border-radius:4px">
+          🔗 Buka di tab baru
+        </a>
+        <button onclick="closeModal('modal-cv-preview')"
+          style="background:none;border:none;color:rgba(255,255,255,0.8);font-size:1.3rem;cursor:pointer;line-height:1">✕</button>
+      </div>
+    </div>
+    <iframe id="cv-preview-iframe"
+      style="width:100%;height:70vh;border:none;background:#f0f0f0"
+      src="about:blank">
+    </iframe>
+    <div style="padding:10px 20px;background:var(--cream);font-size:0.73rem;color:var(--muted);text-align:center">
+      Jika preview tidak muncul (CV diproteksi), klik "Buka di tab baru" di atas.
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
