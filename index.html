@@ -1238,6 +1238,7 @@ function renderDashboard() {
 }
 
 function calcDays(d1, d2) {
+  if (!d1 || d1 === '' || d1 === 'Invalid Date') return null;
   if (!d1 || !d2) return null;
   return Math.round((new Date(d2) - new Date(d1)) / 86400000);
 }
@@ -1273,7 +1274,7 @@ function drawFunnel(posFilter) {
     const pos = allPosisi.find(p => p.nama === posFilter);
     if (pos && pos.tglReq) {
       const reqDate = new Date(pos.tglReq);
-      data = data.filter(k => k.tanggal && new Date(k.tanggal) >= reqDate);
+      data = data.filter(k => k.tglDaftar && new Date(k.tglDaftar) >= reqDate);
     }
   }
   const total = data.length;
@@ -1427,7 +1428,7 @@ function renderKandidat() {
       <td>${provBadge}</td>
       <td style="font-size:0.76rem">${k.pendidikan || '—'}</td>
       <td style="font-size:0.76rem">${hlJurusan}</td>
-      <td class="text-muted">${fmtDate(k.tanggal)}</td>
+      <td class="text-muted">${fmtDate(k.tglDaftar)}</td>
       <td>${cvLink}</td>
       <td><span class="badge ${badgeCls}">${stage}</span></td>
       <td class="nowrap">
@@ -1648,7 +1649,7 @@ function saveJTAll(row) {
   if (!k) return;
   const score  = k.jobTestScore ?? '';
   const hadir  = k.jobTestHadir || '';
-  const params = `action=updateJobTest&row=${row}&jobTestScore=${score}&jobTestHadir=${encodeURIComponent(hadir)}&t=${Date.now()}`;
+  const params = `action=updateJobTest&row=${row}&jobTestHadir=${encodeURIComponent(hadir)}&jobTestScore=${score}&t=${Date.now()}`;
   jsonp(apiUrl + '?' + params, function(res) {
     if (res.error) { alert('Gagal: ' + res.error); return; }
     showToast('Data Job Test tersimpan ✓');
@@ -1944,11 +1945,12 @@ function renderPosisiTable() {
     return;
   }
   tbody.innerHTML = allPosisi.map(p => {
-    const d   = p.tglFulfil ? calcDays(p.tglReq, p.tglFulfil) : daysSince(p.tglReq);
+    const rawD = p.tglFulfil ? calcDays(p.tglReq, p.tglFulfil) : daysSince(p.tglReq);
+      const d = (rawD === null || isNaN(rawD)) ? null : rawD;
     const cls = !p.tglFulfil ? (d <= 30 ? 'days-ok' : d <= 50 ? 'days-warn' : 'days-bad') : '';
     const status = p.tglFulfil
       ? '<span class="badge badge-green">Terpenuhi</span>'
-      : `<span class="badge badge-yellow" style="color:${d>50?'#7a2010':'#856404'};background:${d>50?'#fde8e4':'#fff3cd'}">Open · ${d} hr</span>`;
+      : `<span class="badge badge-yellow" style="color:${d>50?'#7a2010':'#856404'};background:${d>50?'#fde8e4':'#fff3cd'}">Open · ${d !== null ? d + ' hr' : '—'}</span>`;
     const fulfilBtn = !p.tglFulfil
       ? `<button class="fulfil-btn" onclick="openFulfilPosisi(${p.row},'${escQ(p.nama)}')">✅ Penuhi</button>&nbsp;`
       : '';
@@ -2028,10 +2030,17 @@ function setText(id, val) {
 }
 
 function fmtDate(d) {
-  if (!d) return '—';
+  if (!d || d === '') return '—';
   try {
-    return new Date(d).toLocaleDateString('id-ID', { day:'2-digit', month:'short', year:'numeric' });
-  } catch(e) { return d; }
+    // Handle format DD/MM/YYYY dari Apps Script
+    if (typeof d === 'string' && /^\d{2}\/\d{2}\/\d{4}$/.test(d)) {
+      const [dd, mm, yyyy] = d.split('/');
+      return dd + ' ' + ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'][parseInt(mm)-1] + ' ' + yyyy;
+    }
+    const dt = new Date(d);
+    if (isNaN(dt.getTime())) return String(d);
+    return dt.toLocaleDateString('id-ID', { day:'2-digit', month:'short', year:'numeric' });
+  } catch(e) { return String(d); }
 }
 
 function escQ(s) { return (s||'').replace(/'/g,"&#39;").replace(/"/g,'&quot;'); }
