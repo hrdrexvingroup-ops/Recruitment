@@ -873,6 +873,11 @@ a:hover { text-decoration: underline; }
     </div>
     <span class="view-count" id="interview-count">0 kandidat</span>
   </div>
+  <div class="ps-sync-info">
+    ℹ️ Kehadiran dibaca otomatis dari Google Form Absensi Interview.
+    Kandidat yang emailnya/namanya ada di form = <strong style="margin:0 4px">Hadir</strong>; yang tidak ada = <strong style="margin:0 4px">Belum Hadir</strong>.
+  </div>
+
   <div class="toolbar">
     <select id="iv-filter-posisi" onchange="renderInterview()">
       <option value="">Semua Posisi</option>
@@ -1227,7 +1232,7 @@ function renderKandidat() {
   let data = allData.filter(k => {
     const st   = k.rekStage || 'Baru';
     const prov = (k.provinsi || '').toLowerCase();
-    const isKepri = prov.includes('kepulauan riau') || prov.includes('kepri');
+    const isKepri = !prov.includes('luar kepri') && (prov.includes('kepulauan riau') || prov.includes('kepri'));
 
     if (posFilter && k.posisi !== posFilter) return false;
     if (stageFilter === 'pending') { if (PROCESSED.includes(st)) return false; }
@@ -1259,15 +1264,15 @@ function renderKandidat() {
     const stage     = k.rekStage || 'Baru';
     const badgeCls  = stageBadge(stage);
     const prov      = k.provinsi || '';
-    const isKepri   = prov.toLowerCase().includes('kepulauan riau') || prov.toLowerCase().includes('kepri');
-    const provLabel = prov
-      ? (isKepri ? 'Kepri' : prov)   // Kepri → singkat; lainnya → tampilkan nilai asli
-      : '';
+    const provLow   = prov.toLowerCase();
+    const isKepri   = !provLow.includes('luar kepri') &&
+                      (provLow.includes('kepulauan riau') || provLow.includes('kepri'));
+    const provLabel = prov ? (isKepri ? 'Kepri' : prov) : '';
     const provBadge = prov
       ? `<span class="badge ${isKepri ? 'badge-kepri' : 'badge-luar'}" title="${prov}">${provLabel}</span>`
       : '<span class="text-muted">—</span>';
     const cvLink = k.cvLink
-      ? `<button onclick="previewCV('${k.cvLink.replace(/'/g,"\\'")}','${escQ(k.nama)}')" style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;background:#fef3c7;border-radius:4px;font-size:0.72rem;font-weight:600;color:#92400e;border:none;cursor:pointer">📄 Lihat CV</button>`
+      ? `<a href="${k.cvLink}" target="_blank" style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;background:#fef3c7;border-radius:4px;font-size:0.72rem;font-weight:600;color:#92400e;text-decoration:none" title="Buka CV di tab baru">📄 Lihat CV</a>`
       : '<span class="text-muted">—</span>';
     const wa = k.wa ? `<a href="https://wa.me/${k.wa.replace(/\D/g,'')}" target="_blank" style="color:var(--green);font-weight:500">📱 ${k.wa}</a>` : '—';
 
@@ -1673,17 +1678,23 @@ function renderInterview() {
   const tbody = document.getElementById('interview-body');
 
   if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="empty-icon">🗣</div><div class="empty-msg">Belum ada kandidat di Interview.</div></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><div class="empty-icon">🗣</div><div class="empty-msg">Belum ada kandidat di Interview.</div></div></td></tr>';
     return;
   }
 
   tbody.innerHTML = data.map(k => {
     const ivHasil   = k.interviewHasil   || '';
     const ivCatatan = k.interviewCatatan || '';
+    const ivHadir = k.interviewHadir === true || k.interviewHadir === 'true';
+    const ivHadirTgl = k.interviewHadirTgl || '';
+    const ivHadirBadge = ivHadir
+      ? `<span class="hadir-auto hadir" title="Tgl: ${ivHadirTgl}">✅ Hadir</span>`
+      : `<span class="hadir-auto absen">❌ Belum Hadir</span>`;
     return `<tr id="row-iv-${k.row}">
       <td class="fw6">${k.nama || '—'}</td>
       <td>${k.posisi || '—'}</td>
       <td>${k.wa || '—'}</td>
+      <td>${ivHadirBadge}</td>
       <td>
         <select class="action-select" style="min-width:150px" onchange="saveIVHasil(this,${k.row})">
           <option value="" ${!ivHasil?'selected':''}>— Hasil Interview —</option>
