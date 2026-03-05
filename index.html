@@ -853,7 +853,7 @@ a:hover { text-decoration: underline; }
         <th>Kehadiran</th>
         <th>Skor IQ</th>
         <th>DISC</th>
-        <th>Keterangan IQ</th>
+        <th>Tipologi</th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -1619,12 +1619,12 @@ function renderPsikotest() {
       <td>${iqBadge}</td>
       <td>${discBadge}</td>
       <td>${iKat ? `<span class="text-muted" style="font-size:0.73rem">${iKat}</span>` : '—'}</td>
-      <td class="nowrap">
-        ${lolos
+      <td class="nowrap" style="display:flex;gap:4px;flex-wrap:wrap">
+        ${hadir
           ? `<button class="save-btn sm" style="background:var(--green)" onclick="advancePsikotest(${k.row})">→ Interview</button>`
           : ''}
         ${hadir
-          ? `<button class="save-btn sm" style="background:var(--red);margin-left:4px" onclick="rejectPs(${k.row})">✕ Reject</button>`
+          ? `<button class="save-btn sm" style="background:var(--red)" onclick="rejectPs(${k.row})">✕ Reject</button>`
           : ''}
       </td>
     </tr>`;
