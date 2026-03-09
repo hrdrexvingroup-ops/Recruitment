@@ -833,6 +833,8 @@ a:hover { text-decoration: underline; }
         onclick="syncPsikotest()">🔄 Hitung &amp; Sync IQ+Tipologi</button>
       <button class="save-btn" style="background:#555;font-size:0.8rem;padding:5px 10px"
         onclick="syncPsikotest(true)">🔄 Recalculate Semua (Timpa)</button>
+      <button class="save-btn" style="background:#888;font-size:0.75rem;padding:4px 9px"
+        onclick="debugSync()">🔍 Debug Hasil Sheet</button>
       <div id="sync-psiko-status" style="font-size:0.75rem;color:#555;min-height:16px"></div>
     </div>
   </div>
@@ -1643,6 +1645,36 @@ function renderPsikotest() {
 
 // Kalkulasi kategori IQ lokal (fallback jika Apps Script tidak return psikotestIKat)
 // ─── SYNC PSIKOTEST — panggil Apps Script untuk hitung IQ+Tipologi ────────
+// ─── DEBUG SYNC ────────────────────────────────────────────────────────────
+function debugSync() {
+  const statusEl = document.getElementById('sync-psiko-status');
+  if (!GS_URL) { alert('URL Apps Script belum diisi!'); return; }
+  statusEl.textContent = '🔍 Mengecek sheet Hasil Psikotest...';
+  statusEl.style.color = '#555';
+
+  fetch(GS_URL + '?action=debugSync')
+    .then(r => r.json())
+    .then(res => {
+      if (res.error) {
+        statusEl.textContent = '❌ ' + res.error;
+        statusEl.style.color = '#c62828';
+        alert('Debug error:\n' + res.error);
+      } else {
+        const info = `Sheet: "${res.sheet}" | ${res.total_rows} baris (termasuk header)\n` +
+                     `Headers: ${res.headers.join(' | ')}\n\n` +
+                     `5 baris pertama:\n` +
+                     res.sample.map((r,i) => `${i+1}. ${r.join(' | ')}`).join('\n');
+        statusEl.textContent = `✅ Sheet ditemukan: ${res.total_rows-1} data`;
+        statusEl.style.color = '#2e7d32';
+        alert(info);
+      }
+    })
+    .catch(err => {
+      statusEl.textContent = '❌ ' + err.message;
+      statusEl.style.color = '#c62828';
+    });
+}
+
 function syncPsikotest(overwrite) {
   const statusEl = document.getElementById('sync-psiko-status');
   const btnEl    = document.getElementById('btn-sync-psiko');
