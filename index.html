@@ -588,7 +588,6 @@ a:hover { text-decoration: underline; }
   <input type="text" id="api-url" placeholder="Paste URL Google Apps Script (https://script.google.com/macros/s/.../exec)">
   <button class="conn-btn" onclick="connectSheet()">Sambungkan</button>
   <span class="conn-status" id="conn-status"></span>
-  <button onclick="refreshData()" style="background:none;border:none;color:rgba(255,255,255,0.6);cursor:pointer;font-size:0.82rem;margin-left:4px" title="Refresh">↻ Refresh</button>
 </div>
 
 <!-- ═══════════════════════ DASHBOARD VIEW ═══════════════════════ -->
@@ -997,7 +996,6 @@ function connectSheet() {
   loadData();
 }
 
-function refreshData() { loadData(); }
 
 function setStatus(type, msg) {
   const el = document.getElementById('conn-status');
@@ -1082,6 +1080,8 @@ function switchView(v) {
   const tabs = ['dashboard','kandidat','jobtest','psikotest','interview'];
   const tabEl = document.querySelectorAll('.nav-tab')[tabs.indexOf(v)];
   if (tabEl) tabEl.classList.add('active');
+  // Auto-reload saat tab Psikotest dibuka supaya IQ+Tipologi selalu fresh
+  if (v === 'psikotest' && GS_URL) loadData();
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -1353,7 +1353,12 @@ function handleKandidatAction(sel, row) {
   updateStage(row, action, function() {
     sel.value = '';
     k.rekStage = action;
-    renderAll();
+    // Reload saat dipindahkan ke Psikotest supaya join data langsung fresh
+    if (action === 'Psikotest' && GS_URL) {
+      loadData();
+    } else {
+      renderAll();
+    }
   });
 }
 
